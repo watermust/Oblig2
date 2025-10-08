@@ -2,51 +2,61 @@ package no.hvl.dat100.matriser;
 
 public class Matriser {
 
-	// a)
-	public static void skrivUt(int[][] matrise) {
-		
-		// TODO
-		throw new UnsupportedOperationException("Metoden skrivUt ikke implementert");
-	}
+    // a) Skriver ut en todimensjonal tabell (matrise)
+    public static void skrivUt(int[][] matrise) {
 
-	// b)
-	public static String tilStreng(int[][] matrise) {
+        for (int[] rad : matrise) {
+            for (int tall : rad) {
+                System.out.print(tall + " ");
+            }
+            System.out.println();
+         }
+    }
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden tilStreng ikke implementert");
-		
-	}
+    // b) Gjør matrisen om til en string
+    public static String tilStreng(int[][] matrise) {
+        String tekst = "";
+        for (int i = 0; i < matrise.length; i++) {
+            for (int j = 0; j < matrise[i].length; j++) {
+                tekst += matrise[i][j] + " ";
+             }
+            tekst += "\n";
+        }
+        return tekst;
+    }
 
-	// c)
-	public static int[][] skaler(int tall, int[][] matrise) {
-		
-		// TODO
-		throw new UnsupportedOperationException("Metoden skaler ikke implementert");
-	
-	}
+    // c) Multipliserer alle tall i matrisen med et gitt tall
+    public static int[][] skaler(int tall, int[][] matrise) {
+        int[][] ny = new int[matrise.length][matrise[0].length];
 
-	// d)
-	public static boolean erLik(int[][] a, int[][] b) {
+        for (int i = 0; i < matrise.length; i++) {
+            for (int j = 0; j < matrise[i].length; j++) {
+                ny[i][j] = matrise[i][j] * tall;
+             }
+        }
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden erLik ikke implementert");
-		
-	}
-	
-	// e)
-	public static int[][] speile(int[][] matrise) {
+        return ny;
+    }
 
-		// TODO
+    // d) Sjekker om to matriser er like
+    public static boolean erLik(int[][] mat1, int[][] mat2) {
 
-		throw new UnsupportedOperationException("Metoden speile ikke implementert");
-	
-	}
+        if (mat1.length != mat2.length) {
+            return false;
+            }
 
-	// f)
-	public static int[][] multipliser(int[][] a, int[][] b) {
+        for (int i = 0; i < mat1.length; i++) {
+            if (mat1[i].length != mat2[i].length) {
+                return false;
+            }
 
-		// TODO
-		throw new UnsupportedOperationException("Metoden multipliser ikke implementert");
-	
-	}
+            for (int j = 0; j < mat1[i].length; j++) {
+                if (mat1[i][j] != mat2[i][j]) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }
